@@ -106,6 +106,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="color1" destination="D87-1U-WU0" id="3lQ-tI-LNB"/>
+                        <outlet property="color2" destination="sKd-u9-nBT" id="f4i-yI-L5I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
