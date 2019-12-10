@@ -13,11 +13,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var color2: UILabel!
     @IBOutlet weak var color1: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
-
+    
     var colors = ["red", "blue", "green", "yellow"]
     var score = 0
-    
+    var timer = Timer()
     
     
     override func viewDidLoad() {
@@ -38,24 +39,35 @@ class ViewController: UIViewController {
         if meaning == textColor && userAnswer == "YES" {
             print("correct")
             
-        } else if meaning != textColor && userAnswer == "NO" {
-            print("correct")
+            backgroundImage.isHidden = true
+            view.backgroundColor = UIColor.green
             
+        } else if meaning != textColor && userAnswer == "NO" {
+
+            backgroundImage.isHidden = true
+            view.backgroundColor = UIColor.green
+
         } else {
             print("false")
+            
+            backgroundImage.isHidden = true
+            view.backgroundColor = UIColor.red
         }
         
-        updateColors()
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateColors), userInfo: nil, repeats: false)
+        
         
     }
     
-    func updateColors(){
+    @objc func updateColors(){
         color1.text = colors.randomElement()
         color2.text = colors.randomElement()
         
         color2.accessibilityIdentifier = color2.text
         color2.textColor = UIColor(named: color2.text!)
 //        print(color2.accessibilityIdentifier!)
+        
+        backgroundImage.isHidden = false
         
     }
     
