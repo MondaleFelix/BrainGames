@@ -60,11 +60,14 @@ class ViewController: UIViewController {
     }
     
     @objc func updateColors(){
+        
         color1.text = colors.randomElement()
         color2.text = colors.randomElement()
         
-        color2.accessibilityIdentifier = color2.text
-        color2.textColor = UIColor(named: color2.text!)
+        let correctAnswer = colors.randomElement()
+        
+        color2.accessibilityIdentifier = correctAnswer
+        color2.textColor = UIColor(named: correctAnswer!)
 //        print(color2.accessibilityIdentifier!)
         
         backgroundImage.isHidden = false
