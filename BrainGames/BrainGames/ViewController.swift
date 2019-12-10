@@ -14,40 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var color2: UILabel!
     @IBOutlet weak var color1: UILabel!
     
-    enum Color {
-        case red
-        case blue
-        case green
-        case yellow
-        
-        var colorName: String{
-            switch self {
-            case .red:
-                return "red"
-            case .blue:
-                return "blue"
-            case .green:
-                return "green"
-            case .yellow:
-                return "yellow"
-            }
-        }
-        
-        var colorIdentifier: UIColor {
-            switch self {
-            case .red:
-                return .red
-            case .blue:
-                return .blue
-            case .green:
-                return .green
-            case .yellow:
-                return .yellow
-            }
-        }
-    }
-    
-    var colors = [Color.red, Color.blue, Color.green, Color.yellow ]
+
+    var colors = ["red", "blue", "green", "yellow"]
+    var score = 0
     
     
     
@@ -55,21 +24,34 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         updateColors()
     
-        // Do any additional setup after loading the view.
     }
 
 
     @IBAction func answerPressed(_ sender: UIButton) {
-        print(sender.currentTitle!)
+//        print(sender.currentTitle!)
+        
+        if color1.text == color2.accessibilityIdentifier && sender.currentTitle! == "YES" {
+            print("correct")
+        } else if color1.text != color2.accessibilityIdentifier && sender.currentTitle! == "NO" {
+            print("correct")
+        } else {
+            print("false")
+        }
         
         updateColors()
+        
     }
     
     func updateColors(){
-        color1.text = colors.randomElement()?.colorName
-        color2.text = colors.randomElement()?.colorName
-        color2.textColor = colors.randomElement()?.colorIdentifier
-
+        color1.text = colors.randomElement()
+        color2.text = colors.randomElement()
+        
+        color2.accessibilityIdentifier = color2.text
+        color2.textColor = UIColor(named: color2.text!)
+//        print(color2.accessibilityIdentifier!)
+        
     }
+    
+
 }
 
