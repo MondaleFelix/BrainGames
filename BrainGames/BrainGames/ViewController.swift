@@ -28,12 +28,19 @@ class ViewController: UIViewController {
 
 
     @IBAction func answerPressed(_ sender: UIButton) {
-//        print(sender.currentTitle!)
         
-        if color1.text == color2.accessibilityIdentifier && sender.currentTitle! == "YES" {
+        let meaning = color1.text
+        let textColor = color2.accessibilityIdentifier
+        let userAnswer = sender.currentTitle!
+        
+        // Handles
+        
+        if meaning == textColor && userAnswer == "YES" {
             print("correct")
-        } else if color1.text != color2.accessibilityIdentifier && sender.currentTitle! == "NO" {
+            
+        } else if meaning != textColor && userAnswer == "NO" {
             print("correct")
+            
         } else {
             print("false")
         }
